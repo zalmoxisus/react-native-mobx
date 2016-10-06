@@ -1,5 +1,6 @@
 import {action, reaction, observable, observe, computed, autorun} from 'mobx';
 import autobind from 'autobind-decorator'
+import remotedev from 'mobx-remotedev';
 
 @autobind
 class CounterStore {
@@ -23,4 +24,6 @@ class CounterStore {
   }
 }
 
-export default  new CounterStore();
+const counter = remotedev(new CounterStore(), { remote: true });
+
+export default counter;
